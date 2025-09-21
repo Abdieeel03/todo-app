@@ -5,6 +5,7 @@ import { TodoList } from './todo-list/todo-list';
 
 @Component({
   selector: 'app-root',
+  standalone: true,
   imports: [AddTodo, TodoList],
   templateUrl: './app.html',
   styleUrl: './app.css'
@@ -17,18 +18,18 @@ export class App {
     { id: 3, title: 'Construir una Todo App', completed: false }
   ]
 
-  addTodo(title: string) {
+  agregarTarea(title: string) {
     if(!title.trim()) return;
     const nuevaId = this.todos.length ? Math.max(...this.todos.map(t => t.id)) + 1 : 1;
     const nuevaTarea: Todo = { id: nuevaId, title: title.trim(), completed: false };
-    this.todos.push(nuevaTarea);
+    this.todos.unshift(nuevaTarea);
   }
 
-  toggleCompletion(todo: Todo) {
+  cambiarEstado(todo: Todo) {
     todo.completed = !todo.completed;
   }
 
-  deleteTodo(id: number) {
+  borrarTarea(id: number) {
     this.todos = this.todos.filter(t => t.id !== id);
   }
 }

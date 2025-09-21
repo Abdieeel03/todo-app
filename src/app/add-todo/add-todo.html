@@ -1,1 +1,12 @@
-<p>add-todo works!</p>
+<form (ngSubmit)="agregarTarea()" class="d-flex gap-2 mb-3">
+  <input
+  type="text"
+  [(ngModel)]="titulo"
+  name="titulo"
+  class="form-control"
+  placeholder="Escribe una nueva tarea..."
+  />
+  <button class="btn btn-primary" type="submit">
+    <i class="bi bi-plus-circle"></i> Agregar
+  </button>
+</form>
