@@ -1,10 +1,10 @@
 <ul class="list-group">
+  @if(todos.length === 0){
+  <li class="list-group-item">No hay tareas pendientes</li>
+  } @else {
   @for(todo of todos; track todo.id){
-    <app-todo-item
-      [todo]="todo"
-      (cambiarEstado)="cambiarEstado(todo)"
-      (borrar)="borrarTarea(todo.id)">
-
-    </app-todo-item>
+  <app-todo-item [todo]="todo" (cambiarEstado)="cambiarEstado(todo)" (borrar)="borrarTarea(todo.id)"></app-todo-item>
   }
+  }
+
 </ul>
